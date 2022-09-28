@@ -11,23 +11,27 @@ public class MyProgram
         ConsoleKeyInfo Choice;
         int test;
         test = 0;
+        bool testing = true;
         int option = 1;
         int CWeapon = 0;
         string LeaveWord = ">Leave [C]";
         int DeleteCount = 0;
+        bool Buffer = true;
 
 
-        
-        Typewrite("You wake up shivering, drenched in cold sweat.");
-        Typewrite("As you come to your senses, you begin to remember the events of the previous night.");
-        Typewrite("You get out of bed, slowly realising the dull pain in your head. Was it a hangover, or perhaps your looming regret?");
-        TypewriteNS("You may ");
-        TypewriteRedNS("leave");
-        TypewriteNS(", ");
-        TypewriteRedNS("look around "); //Future note to self: RedNS means Red Text with no jump to next line (no space)
-        TypewriteNS("or ");
-        TypewriteRedNS("search ");
-        Typewrite("the room.");
+        if (testing != true)
+        {
+            Typewrite("You wake up shivering, drenched in cold sweat.");
+            Typewrite("As you come to your senses, you begin to remember the events of the previous night.");
+            Typewrite("You get out of bed, slowly realising the dull pain in your head. Was it a hangover, or perhaps your looming regret?");
+            TypewriteNS("You may ");
+            TypewriteRedNS("leave");
+            TypewriteNS(", ");
+            TypewriteRedNS("look around "); //Future note to self: RedNS means Red Text with no jump to next line (no space)
+            TypewriteNS("or ");
+            TypewriteRedNS("search ");
+            Typewrite("the room.");
+        }
 
 
 
@@ -53,9 +57,11 @@ public class MyProgram
                     DeleteCount++;
                 }
                 LookAround(option);
+
             }
-            else if (Choice.Key == ConsoleKey.X)
+            else if (Choice.Key == ConsoleKey.X && (option != 1))
             {
+                DeleteCount = 0;
                 while (DeleteCount < 3)
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
@@ -68,7 +74,7 @@ public class MyProgram
             }
             else if (Choice.Key == ConsoleKey.X && option == 1)
             {
-
+                DeleteCount = 0;
                 while (DeleteCount < 3)
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
@@ -78,9 +84,25 @@ public class MyProgram
 
                 Search(option);
                 CWeapon++;
+                Console.WriteLine(@"                                                       ___
+                                                      |_  |
+                                                        | |
+__                      ____                            | |
+\ ````''''----....____.'\   ````''''--------------------| |--.               _____      .-.
+ :.                      `-._                           | |   `''-----''''```     ``''|`: :|
+  '::.                       `'--.._____________________| |                           | : :|
+    '::..       ----....._______________________________| |                           | : :|
+      `'-::...__________________________________________| |   .-''-..-'`-..-'`-..-''-.| : :|
+           ```'''---------------------------------------| |--'                         `'-'
+                                                        | |
+                                                       _| |
+                                                      |___| 
+");
+
             }
             else if (Choice.Key == ConsoleKey.C)
             {
+                DeleteCount = 0;
                 while (DeleteCount < 3)
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
